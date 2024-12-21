@@ -2,8 +2,10 @@
   "uuid": "whisper@DominicBoettger",
   "name": "Whisper Recorder",
   "description": "Records audio and transcribes it using OpenAI's Whisper API. This extension is in no way affiliated with OpenAI.",
-  "shell-version": [ "45", "46", "47"],
-	"settings-schema": "org.gnome.shell.extensions.whisper",
+  "shell-version": ["45", "46", "47"],
+  "settings-schema": "org.gnome.shell.extensions.whisper",
   "version": 1,
-  "url": "https://github.com/DominicBoettger/gnome-extension-whisper"
+  "url": "https://github.com/DominicBoettger/gnome-extension-whisper",
+  "keywords": ["audio", "transcription", "OpenAI", "Whisper"],
+  "license": "MIT"
 }
