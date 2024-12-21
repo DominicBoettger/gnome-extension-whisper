@@ -223,8 +223,19 @@ class WhisperIndicator extends PanelMenu.Button {
 
                     const transcription = JSON.parse(responseText);
 
-                    St.Clipboard.get_default().set_text(St.ClipboardType.CLIPBOARD, transcription.text);
-                    this._showNotification('Transcription copied to clipboard');
+                    // Stream the transcription at the cursor
+                    const seat = Clutter.get_default_backend().get_default_seat();
+                    const device = seat.get_pointer();
+                    const [x, y] = device.get_position();
+                    const stage = device.get_stage();
+                    const label = new St.Label({
+                        text: transcription.text,
+                        style_class: 'transcription-label',
+                    });
+                    label.set_position(x, y);
+                    stage.add_child(label);
+
+                    this._showNotification('Transcription streamed at cursor');
                     resolve();
                 } catch (e) {
                     console.log('Error processing transcription:', e);
